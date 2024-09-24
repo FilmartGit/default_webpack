@@ -44,29 +44,31 @@ module.exports = {
         test: /\.html$/i,
         loader: 'html-loader',
       },
-      {
-        test: /\.(c|sa|sc)ss$/i,
-        use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [require('postcss-preset-env')],
-              },
-            },
-          },
-          'group-css-media-queries-loader',
-          {
-            loader: 'resolve-url-loader',
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
+      { 
+        test: /\.(c|sa|sc)ss$/i, 
+        use: [ 
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 
+          'css-loader', 
+          { 
+            loader: 'postcss-loader', 
+            options: { 
+              postcssOptions: { 
+                plugins: [require('postcss-preset-env')], 
+              }, 
+            }, 
+          }, 
+          'group-css-media-queries-loader', 
+          { 
+            loader: 'resolve-url-loader', 
+          }, 
+          { 
+            loader: 'sass-loader', 
+            options: { 
+              // update api sass loader
+              api: "modern",
+              sourceMap: true, 
+            }, 
+          }, 
         ],
       },
       {
